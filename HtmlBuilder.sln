@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlBuilder", "HtmlBuilder\HtmlBuilder.csproj", "{3CD93129-A2CE-4119-8C6F-FA5C753CD01C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlBuilder.Tests", "HtmlBuilder.Tests\HtmlBuilder.Tests.csproj", "{37BFEE9E-2D66-4182-9072-1826ACED8520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{4823BE4B-FAF7-4A2B-8B3C-83D3AFFC17D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CD93129-A2CE-4119-8C6F-FA5C753CD01C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD93129-A2CE-4119-8C6F-FA5C753CD01C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD93129-A2CE-4119-8C6F-FA5C753CD01C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD93129-A2CE-4119-8C6F-FA5C753CD01C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37BFEE9E-2D66-4182-9072-1826ACED8520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BFEE9E-2D66-4182-9072-1826ACED8520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BFEE9E-2D66-4182-9072-1826ACED8520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BFEE9E-2D66-4182-9072-1826ACED8520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4823BE4B-FAF7-4A2B-8B3C-83D3AFFC17D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4823BE4B-FAF7-4A2B-8B3C-83D3AFFC17D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4823BE4B-FAF7-4A2B-8B3C-83D3AFFC17D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4823BE4B-FAF7-4A2B-8B3C-83D3AFFC17D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

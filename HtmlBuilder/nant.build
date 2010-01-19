@@ -1,0 +1,20 @@
+<project name="HtmlBuilder" default="build">
+	<target name="build">
+		<delete dir="bin" if="${directory::exists('bin')}" />
+		<mkdir dir="bin" />
+		<csc
+			target="library"
+			output="bin/HtmlBuilder.dll"
+			doc="bin/HtmlBuilder.xml"
+			warnaserror="true"
+			warninglevel="4"
+			optimize="true"
+			debug="false">
+			<sources>
+				<include name="**/*.cs" />
+			</sources>
+			
+		</csc>
+		
+	</target>
+</project>
