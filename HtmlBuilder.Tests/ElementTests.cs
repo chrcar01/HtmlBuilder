@@ -10,7 +10,16 @@ namespace HtmlBuilderBuilder.Tests
 	[TestFixture]
 	public class ElementTests
 	{
-		
+		[Test]
+		public void CanRenderElementToHtmlTextWriter()
+		{
+			Assert.AreEqual("<img></img>", new Element("img").Render(RendersTo.HtmlTextWriter));
+		}
+		[Test]
+		public void CanRenderElementAsXmlTextWriter()
+		{
+			Assert.AreEqual("<img />", new Element("img").Render(RendersTo.XmlTextWriter));
+		}
 		[Test]
 		public void Test()
 		{

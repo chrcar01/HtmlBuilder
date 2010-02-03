@@ -8,7 +8,7 @@ namespace HtmlBuilder
 	/// <summary>
 	/// This is the base class for any class that wants to render itself as HtmlBuilder.  
 	/// </summary>
-	public abstract class RenderableComponent : IRender
+	public abstract class RenderableComponent : IRender, IRenderTo
 	{
 
 		/// <summary>
@@ -81,5 +81,37 @@ namespace HtmlBuilder
 			}
 			return result;
 		}
+
+
+		/// <summary>
+		/// Renders the current component through different writers.
+		/// </summary>
+		/// <param name="renderTo">The type of writer to use when rendering.</param>
+		/// <returns></returns>
+		public string Render(RendersTo renderTo)
+		{
+			string result = String.Empty;
+			using (var textWriter = new StringWriter())
+			{
+				switch (renderTo)
+				{
+					case RendersTo.XmlTextWriter:
+						var xmlWriter = new XmlTextWriter(textWriter);
+						this.Render(xmlWriter);
+						break;
+
+					case RendersTo.HtmlTextWriter:
+					default:
+						using (var htmlWriter = new HtmlTextWriter(textWriter))
+						{
+							this.Render(htmlWriter);
+						}
+						break;
+				}
+				result = textWriter.ToString();
+			}
+			return result;
+		}
+
 	}
 }
