@@ -8,7 +8,7 @@ namespace HtmlBuilder
 	/// to the differences between an XmlTextWriter and the other
 	/// flavor of TextWriters like the StringWriter and HtmlTextWriter.
 	/// </summary>
-	public interface IWriter
+	public interface IWriter : IDisposable
 	{
 		/// <summary>
 		/// Writes the specified s.

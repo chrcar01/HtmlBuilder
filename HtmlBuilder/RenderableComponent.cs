@@ -96,8 +96,10 @@ namespace HtmlBuilder
 				switch (renderTo)
 				{
 					case RendersTo.XmlTextWriter:
-						var xmlWriter = new XmlTextWriter(textWriter);
-						this.Render(xmlWriter);
+						using(var xmlWriter = new XmlTextWriter(textWriter))
+						{
+							this.Render(xmlWriter);
+						}
 						break;
 
 					case RendersTo.HtmlTextWriter:

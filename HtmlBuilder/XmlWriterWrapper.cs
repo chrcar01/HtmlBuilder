@@ -1,5 +1,6 @@
 using System;
 using System.Xml;
+using System.IO;
 
 namespace HtmlBuilder
 {
@@ -16,6 +17,15 @@ namespace HtmlBuilder
 		public XmlWriterWrapper(XmlWriter xml)
 		{
 			_xml = xml;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="XmlWriterWrapper"/> class.
+		/// </summary>
+		/// <param name="text">The text writer.  Internally this is used the ctor of an XmlTextWriter.</param>
+		public XmlWriterWrapper(TextWriter text)
+			: this(new XmlTextWriter(text))
+		{
 		}
 
 		/// <summary>
@@ -70,5 +80,12 @@ namespace HtmlBuilder
 		{
 			_xml.WriteRaw(c.ToString());
 		}
+
+		
+		void IDisposable.Dispose()
+		{
+			((IDisposable)_xml).Dispose();
+		}
+
 	}
 }

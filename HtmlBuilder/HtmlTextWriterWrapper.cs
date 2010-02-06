@@ -1,5 +1,6 @@
 using System;
 using System.Web.UI;
+using System.IO;
 
 namespace HtmlBuilder
 {
@@ -18,7 +19,14 @@ namespace HtmlBuilder
 		{
 			_html = html;
 		}
-
+		/// <summary>
+		/// Initializes a new instance of the HtmlTextWriterWrapper class.
+		/// </summary>
+		/// <param name="text">The TextWriter used in creating an HtmlTextWriter internallly.</param>
+		public HtmlTextWriterWrapper(TextWriter text)
+			: this(new HtmlTextWriter(text))
+		{
+		}
 		/// <summary>
 		/// Closes a tag.  Writes an <see cref="HtmlTextWriter.TagRightChar"/> to the stream.
 		/// </summary>
@@ -72,5 +80,12 @@ namespace HtmlBuilder
 		{
 			_html.Write(c);
 		}
+
+		
+		void IDisposable.Dispose()
+		{
+			((IDisposable)_html).Dispose();
+		}
+
 	}
 }

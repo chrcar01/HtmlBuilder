@@ -12,7 +12,7 @@ namespace HtmlBuilder
 	/// String blah = new ElementList(new Element("p").Update("test"), new Element("b").Update("poop"))
 	/// would render <p>test</p><b>poop</b>
 	/// </summary>
-	public class ElementList : List<Element>, IRender
+	public class ElementList : List<Element>, IRender, IRenderTo
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ElementList"/> class.
@@ -110,6 +110,37 @@ namespace HtmlBuilder
 		public static implicit operator string(ElementList elements)
 		{
 			return elements.ToString();
+		}
+
+
+		/// <summary>
+		/// Renders a component to the specified writer.
+		/// </summary>
+		/// <param name="renderTo">The writer to use as the for rendering.</param>
+		/// <returns></returns>
+		public string Render(RendersTo renderTo)
+		{
+			string result = String.Empty;
+			using (var textWriter = new StringWriter())
+			using (IWriter renderWriter = CreateWrapper(textWriter, renderTo))
+			{
+				foreach (var element in this)
+				{
+					element.Render(renderWriter);
+				}
+				result = textWriter.ToString();
+			}
+			return result;
+		}
+
+		private IWriter CreateWrapper(StringWriter textWriter, RendersTo renderTo)
+		{
+			switch (renderTo)
+			{
+				case RendersTo.XmlTextWriter: return new XmlWriterWrapper(textWriter);
+				case RendersTo.HtmlTextWriter:
+				default: return new HtmlTextWriterWrapper(textWriter);
+			}
 		}
 	}
 }

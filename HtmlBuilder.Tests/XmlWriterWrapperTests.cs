@@ -13,6 +13,20 @@ namespace HtmlBuilderBuilder.Tests
 	public class XmlWriterWrapperTests
 	{
 		[Test]
+		public void XmlWriterWrapperCanBeUsedInUsingWithTextWriter()
+		{
+			var el = new Element("img", "src=myimage.gif");
+			var expected = "<img src=\"myimage.gif\" />";
+			var actual = String.Empty;
+			using (var textWriter = new StringWriter())
+			using (var xml = new XmlWriterWrapper(textWriter))
+			{
+				el.Render(xml);
+				actual = textWriter.ToString();
+			}
+			Assert.AreEqual(expected, actual);
+		}
+		[Test]
 		public void XmlWriterWrapperWrapsXmlTextWriterBehindIWriter()
 		{
 			string actual;

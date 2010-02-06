@@ -11,6 +11,23 @@ namespace HtmlBuilderBuilder.Tests
 	public class ElementListTests
 	{
 		[Test]
+		public void ElementListCanRenderAsHtml()
+		{
+			var list = new ElementList(new Element("input", "type=text"), new Element("img", "src=stoopid.gif"));
+			var expected = "<input type=\"text\"></input><img src=\"stoopid.gif\"></img>";
+			var actual = list.Render(RendersTo.HtmlTextWriter);
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void ElementListCanRenderAsXml()
+		{
+			var list = new ElementList(new Element("input", "type=text"), new Element("img", "src=stoopid.gif"));
+			var expected = "<input type=\"text\" /><img src=\"stoopid.gif\" />";
+			var actual = list.Render(RendersTo.XmlTextWriter);
+			Assert.AreEqual(expected, actual);
+		}
+		[Test]
 		public void NullElementsNotAddedToElementList()
 		{
 			Element nullelement = null;
